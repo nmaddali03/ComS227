@@ -1,0 +1,119 @@
+package apComS;
+
+import java.util.Scanner;
+
+public class MainActivity {
+	public static void main(String[] args) {
+		Scanner begin = new Scanner(System.in);
+		System.out.println("We are beginning to travel. Where do you want to start? ");
+		String locationStart = begin.nextLine();  // Read user input
+		System.out.println("Start Location is: " + locationStart); 
+
+		System.out.println("Enter a lodging cost for the location given ");
+		int lodgingCost = begin.nextInt();
+		System.out.println("The lodging cost is: " + lodgingCost);
+
+		System.out.println("How much funds do you currently have: ");
+		int funds = begin.nextInt();
+		System.out.println("The current funds are: " + funds);
+
+		Location c = new Location(locationStart, lodgingCost);
+		Backpacker b = new Backpacker(funds, c);
+
+		
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Would you like to travel? If yes click 1 otherwise click 2 ");
+		int choice = scan.nextInt();
+
+		if (choice == 1) {
+			Scanner test = new Scanner(System.in);
+
+			System.out.println("Where would you like to go: ");
+			String currentLocation = test.nextLine();
+
+			System.out.println("Next Location is: " + currentLocation); 
+
+			System.out.println("Enter a lodging cost for the location given ");
+			int lodgingCost = test.nextInt();
+			System.out.println("The lodging cost is: " + lodgingCost);
+
+			Location a = new Location(currentLocation, lodgingCost);
+
+		}
+		else {
+			System.out.println("Thank you for traveling");
+		}
+
+		Scanner scan1 = new Scanner(System.in);
+		System.out.println("Would you like to deposit funds? \nIf yes click 1 otherwise click 2 ");
+		if (choice == 1) {
+			System.out.println("How much would you like to deposit: ");
+			int deposit = scan.nextInt();
+			funds += deposit;
+		}
+		else {
+			System.out.println("Thank you for depositing");
+		}
+	}
+
+	/*public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter a place you want to go to");
+
+	    String locationStart = scan.nextLine();  // Read user input
+	    System.out.println("Start Location is: " + locationStart); 
+
+	    System.out.println("Enter a lodging cost for the location given ");
+	    int lodgingCost = scan.nextInt();
+	    System.out.println("The lodging cost is: " + lodgingCost);
+
+	    System.out.println("How much funds do you currently have: ");
+	    int funds = scan.nextInt();
+	    System.out.println("The current funds are: " + funds);
+
+		Location c = new Location(locationStart, lodgingCost);
+
+	    Backpacker b = new Backpacker(funds, c);
+
+		System.out.println(c.getName());     
+		System.out.println(c.lodgingCost());
+		System.out.println(c.toString(lodgingCost));
+		System.out.println(c.maxNumberOfPostcards(50)); 
+		System.out.println(b.getCurrentLocation());  
+	    System.out.println(b.getJournal()); 
+
+
+		Scanner scan1 = new Scanner(System.in);
+	    System.out.println("Would you like to travel to a new location? \nIf yes click 1 otherwise click 2 ");
+	    int choice = scan1.nextInt();
+
+	    if (choice == 1) {
+	    	System.out.println("Where would you like to go: ");
+	    	String currentLocation = scan1.nextLine();
+		    System.out.println("Next Location is: " + currentLocation); 
+		    System.out.println("Enter a lodging cost for the location given ");
+		    lodgingCost = scan1.nextInt();
+		    System.out.println("The lodging cost is: " + lodgingCost);
+		    Location nextPlace = new Location(currentLocation, lodgingCost);
+	    }
+	    else {
+	    	System.out.println("Thank you for traveling");
+	    }
+
+	    System.out.println("Would you like to deposit funds? \nIf yes click 1 otherwise click 2 ");
+	    if (choice == 1) {
+	    	System.out.println("How much would you like to deposit: ");
+	    	int deposit = scan.nextInt();
+	    	funds += deposit;
+	    }
+	    else {
+	    	System.out.println("Thank you for depositing");
+	    }
+	}*/
+
+	//TODO
+	//every time the backpacker sends a postcard, they can 5 dollars in a giftcard for their
+	//travels
+}

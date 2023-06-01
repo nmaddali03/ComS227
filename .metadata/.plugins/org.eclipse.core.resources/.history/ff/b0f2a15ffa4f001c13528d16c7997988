@@ -1,0 +1,84 @@
+package apComS;
+
+import java.util.Scanner;
+
+public class MainActivity {
+	public static void main(String[] args) {
+		Scanner begin = new Scanner(System.in);
+		System.out.println("We are beginning to travel. Where do you want to start? ");
+		String locationStart = begin.nextLine();  // Read user input
+		System.out.println("Start Location is: " + locationStart); 
+
+		System.out.println("Enter a lodging cost for the location given ");
+		int lodgingCost = begin.nextInt();
+		System.out.println("The lodging cost is: " + lodgingCost);
+
+		System.out.println("How much funds do you currently have: ");
+		int funds = begin.nextInt();
+		System.out.println("The current funds are: " + funds);
+
+		Location c = new Location(locationStart, lodgingCost);
+		Backpacker b = new Backpacker(funds, c);
+
+		System.out.println("The visiting location is: " + c.getName() + " and the lodging cost is: " + c.lodgingCost());     
+		System.out.println("The current location the backpacker (you) are in is: " + b.getCurrentLocation());  
+
+		System.out.println("---------------------------------------------");  
+
+		
+		Scanner run = new Scanner(System.in);
+		System.out.println("Run program? If yes click 1 otherwise click 2.");
+		int answer = run.nextInt();
+		
+		do {
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Would you like to travel? If yes click 1 otherwise click 2 ");
+			int choice = scan.nextInt();
+
+			if (choice == 1) {
+				Scanner test = new Scanner(System.in);
+
+				System.out.println("Where would you like to go: ");
+				String currentLocation = test.nextLine();
+
+				System.out.println("Next Location is: " + currentLocation); 
+
+				System.out.println("Enter a lodging cost for the location given ");
+				lodgingCost = test.nextInt();
+				System.out.println("The lodging cost is: " + lodgingCost);
+
+				c = new Location(currentLocation, lodgingCost);
+				b = new Backpacker(funds, c);
+
+				System.out.println("The visiting location is: " + c.getName() + " and the lodging cost is: " + c.lodgingCost());     
+				System.out.println("The current location the backpacker (you) are in is: " + b.getCurrentLocation());  
+
+				System.out.println("Here is the max number of nights you can spend here: " + c.maxLengthOfStay(b.getCurrentFunds()));
+				System.out.println("How many nights would you like to spend in " + b.getCurrentLocation() +"?");
+				int nightsSpend = test.nextInt();
+				b.visit(c, nightsSpend);
+				System.out.println("Your current funds now are: " + b.getCurrentFunds());			
+			}
+			else {
+				System.out.println("Thank you for traveling");
+			}
+
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Would you like to deposit funds? If yes click 1 otherwise click 2 ");
+			int choice1 = scan.nextInt();
+			if (choice1 == 1) {
+				Scanner test1 = new Scanner(System.in);
+
+				System.out.println("How much would you like to deposit: ");
+				int deposit = scanner.nextInt();
+				System.out.println("You deposited: " + deposit); 
+				b.depositFunds(deposit);
+				System.out.println("Your current funds are: " + b.getCurrentFunds());			
+			}
+			else {
+				System.out.println("Thank you for depositing");
+			}	
+		}while(answer == 1);
+			
+	}
+}
